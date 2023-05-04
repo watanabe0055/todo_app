@@ -15,10 +15,12 @@ export const TasKCreate = ({ onFormSubmit }: TasKCreateProps) => {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm<FormDate>();
 
     const onSubmit = (data: FormDate) => {
         onFormSubmit(data);
+        reset();
     };
 
     return (
