@@ -1,12 +1,16 @@
 import { Box, Button, Stack, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-type FormDate = {
+export type FormDate = {
     title: string;
     content: string;
 };
 
-export const TasKCreate = () => {
+type TasKCreateProps = {
+    onFormSubmit: (formData: FormDate) => void;
+};
+
+export const TasKCreate = ({ onFormSubmit }: TasKCreateProps) => {
     const {
         register,
         handleSubmit,
@@ -14,7 +18,7 @@ export const TasKCreate = () => {
     } = useForm<FormDate>();
 
     const onSubmit = (data: FormDate) => {
-        console.log(data);
+        onFormSubmit(data);
     };
 
     return (
