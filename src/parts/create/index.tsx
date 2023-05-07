@@ -1,5 +1,8 @@
 import { Box, Button, Stack, TextField } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 import { useForm } from 'react-hook-form';
+import styled from 'styled-components';
+import { AppBox } from '../box';
 
 export type FormDate = {
     title: string;
@@ -22,6 +25,9 @@ export const TasKCreate = ({ onFormSubmit }: TasKCreateProps) => {
         onFormSubmit(data);
         reset();
     };
+    const Alert = styled.div`
+        color: red;
+    `;
 
     return (
         <>
@@ -36,29 +42,46 @@ export const TasKCreate = ({ onFormSubmit }: TasKCreateProps) => {
                     },
                 }}
             >
-                <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap">
+                <Stack spacing={{ xs: 1, sm: 2 }} useFlexGap flexWrap="wrap">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <TextField
-                            id="title"
-                            label="タイトル"
-                            type="text"
-                            variant="outlined"
-                            {...register('title', { required: '※必須項目' })}
-                            sx={{ width: 500 }}
-                        />
-                        <p>{errors.title?.message}</p>
-                        <TextField
-                            id="content"
-                            label="コンテンツ"
-                            type="text"
-                            variant="outlined"
-                            {...register('content')}
-                            sx={{ width: 500 }}
-                        />
-                        <p>{errors.content?.message}</p>
-                        <Button variant="outlined" type="submit">
-                            送信
-                        </Button>
+                        <AppBox>
+                            <Alert>
+                                <p className="">{errors.title?.message}</p>
+                            </Alert>
+                            <TextField
+                                id="title"
+                                label="タイトル"
+                                type="text"
+                                variant="outlined"
+                                fullWidth
+                                {...register('title', { required: '※必須項目' })}
+                                sx={{ maxWidth: 1000 }}
+                            />
+                        </AppBox>
+                        <AppBox>
+                            <TextField
+                                id="content"
+                                label="コンテンツ"
+                                type="text"
+                                variant="outlined"
+                                {...register('content')}
+                                fullWidth
+                                multiline
+                                rows={4}
+                                sx={{ maxWidth: 1000 }}
+                            />
+                        </AppBox>
+
+                        <AppBox>
+                            <Button
+                                variant="outlined"
+                                type="submit"
+                                size="large"
+                                endIcon={<SendIcon />}
+                            >
+                                登録
+                            </Button>
+                        </AppBox>
                     </form>
                 </Stack>
             </Box>
