@@ -14,11 +14,13 @@
   "dependencies": {
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
+    "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
-    "react-window": "^1.8.9"
+    "react-window": "^1.8.9",
+    "styled-components": "^6.0.0-rc.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.5",

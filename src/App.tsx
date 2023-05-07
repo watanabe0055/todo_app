@@ -9,6 +9,7 @@ function App() {
     const handleFormSubmit = (data: FormDate) => {
         setTodoList((prevTodoList) => [...prevTodoList, data]);
     };
+
     return (
         <>
             <TasKCreate onFormSubmit={handleFormSubmit} />
